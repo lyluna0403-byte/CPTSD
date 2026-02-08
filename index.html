@@ -2,8 +2,9 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>溯源之旅 - CPTSD自我疗愈指南 (完整版)</title>
+    <link rel="preload" as="image" href="身体扫描图.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -21,6 +22,14 @@
             color: var(--text-main);
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
+        }
+        @media (max-width: 767px) {
+            body {
+                padding-left: calc(env(safe-area-inset-left) + 1rem);
+                padding-right: calc(env(safe-area-inset-right) + 1rem);
+                padding-top: calc(env(safe-area-inset-top) + 1rem);
+                padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+            }
         }
 
         .glass-card {
@@ -46,6 +55,9 @@
             line-height: 1.3;
             text-align: center;
         }
+        @media (max-width: 480px) {
+            .main-title { font-size: 28px; letter-spacing: 0.1em; }
+        }
 
         .title-underline {
             width: 50px;
@@ -62,6 +74,9 @@
             gap: 1rem;
             margin: 4rem 0 2rem;
         }
+        @media (max-width: 480px) {
+            .section-header { margin: 2rem 0 1rem; gap: 0.75rem; }
+        }
         .header-box {
             background: var(--primary-color);
             color: white;
@@ -71,6 +86,9 @@
             font-size: 21.33px;
             letter-spacing: 0.05em;
             flex-shrink: 0;
+        }
+        @media (max-width: 480px) {
+            .header-box { font-size: 18px; padding: 0.4rem 1rem; }
         }
         .header-line {
             height: 1px;
@@ -105,13 +123,34 @@
             margin-left: auto;
             margin-right: auto;
         }
+        @media (max-width: 480px) {
+            .content-section { padding: 1.5rem; border-radius: 1rem; }
+        }
 
         .step-item {
-            border-bottom: 1px dashed #f0e0e9;
+            border-bottom: none;
             padding-bottom: 1.5rem;
             margin-bottom: 1.5rem;
         }
+        #part4 .step-item { border-bottom: 1px dashed #f0e0e9; }
+        #part4 .step-item:nth-child(n+3) { border-bottom: none; }
+        .part4-grid { position: relative; }
+        @media (min-width: 768px) {
+            .part4-grid::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 50%;
+                border-left: 1px dashed #f0e0e9;
+                transform: translateX(-0.5px);
+            }
+        }
         .step-item:last-child { border: none; }
+        #part4 h5 { font-size: 14.67px !important; }
+        #part1 .step-item { margin-bottom: 0.9rem; padding-bottom: 0.9rem; }
+        #part1 h4 { margin-bottom: 0.4rem; }
+        #part1 .quote-bubble { margin: 0.6rem 0; }
 
         .quote-bubble {
             background: #fffbf7;
@@ -123,6 +162,7 @@
             color: #a64a76;
             font-weight: 600;
             font-size: 0.95rem;
+            line-height: 2;
         }
 
         /* 认知重组卡片新设计 */
@@ -139,34 +179,40 @@
             background: white;
             border: 1.5px dashed var(--primary-color);
             border-bottom: none;
-            padding: 1.25rem 1.75rem;
-            border-radius: 1.25rem 1.25rem 0 0;
+            padding: 0.85rem 1.5rem;
+            border-radius: 1rem 1rem 0 0;
             opacity: 0.6;
+            font-size: 13.33px;
+            line-height: 1.8;
         }
         .card-light-side {
             background: var(--primary-color);
             color: white;
-            padding: 1.25rem 1.75rem;
-            border-radius: 0 0 1.25rem 1.25rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 0 0 1rem 1rem;
             position: relative;
             box-shadow: 0 8px 20px rgba(222, 149, 186, 0.15);
+            font-size: 13.33px;
+            line-height: 1.8;
         }
         .card-arrow {
-            width: 32px; height: 32px;
+            width: 24px; height: 24px;
             background: white;
             color: var(--primary-color);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            position: absolute; right: 1.5rem; top: -16px;
+            position: absolute; right: 1.25rem; top: -12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             font-weight: 900;
             z-index: 10;
         }
+        .transform-card p { font-size: 13.33px !important; }
         .tag-shadow { font-size: 0.65rem; font-weight: 900; text-transform: uppercase; color: var(--primary-color); display: block; margin-bottom: 0.4rem; }
         .tag-light { font-size: 0.65rem; font-weight: 900; text-transform: uppercase; color: var(--bg-accent); display: block; margin-bottom: 0.4rem; }
+        .rights-item { height: 48px; padding: 0.5rem 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; border: 1px solid #ffe4ef; border-radius: 0.5rem; background: white; font-size: 13.33px; line-height: 1.6; }
 
         .breath-box {
-            width: 60px; height: 60px; border-radius: 50%;
+            width: 36px; height: 36px; border-radius: 50%;
             background: #DE95BA; opacity: 0.15;
             animation: breathAction 6s infinite ease-in-out;
             margin: 1.5rem auto;
@@ -175,17 +221,37 @@
             0%, 100% { transform: scale(1); opacity: 0.15; }
             50% { transform: scale(1.5); opacity: 0.05; }
         }
+        .relax-lines { width: 60px; height: 36px; margin: 0.75rem auto; position: relative; }
+        .relax-lines span { position: absolute; left: 0; right: 0; height: 6px; background: #DE95BA; opacity: 0.15; border-radius: 8px; animation: relaxFlow 2.4s infinite ease-in-out; }
+        .relax-lines span:nth-child(1) { top: 0; animation-delay: 0s; }
+        .relax-lines span:nth-child(2) { top: 14px; animation-delay: 0.4s; }
+        .relax-lines span:nth-child(3) { top: 28px; animation-delay: 0.8s; }
+        @keyframes relaxFlow { 0%, 100% { transform: scaleX(0.6); opacity: 0.15; } 50% { transform: scaleX(1); opacity: 0.35; } }
+        .relax-card { display: flex; flex-direction: column; align-items: center; min-height: 140px; }
+        .breath-card { display: flex; flex-direction: column; align-items: center; min-height: 140px; }
+        .relax-card p { margin-top: auto; font-size: 13.33px !important; }
+        .breath-card p { margin-top: auto; font-size: 13.33px !important; }
+        .visual-area { height: 48px; display: flex; align-items: center; justify-content: center; margin: 0.5rem 0 0.75rem; }
 
         p { line-height: 2; margin-bottom: 1rem; text-align: justify; font-size: 14.67px; }
+        @media (max-width: 480px) {
+            p { font-size: 14px; }
+        }
+        .loose-lines { line-height: 2.7; margin: 0.6rem 0; font-size: 14.67px; }
         li { line-height: 2; }
-        h4, h5 { font-size: 21.33px; }
+        h4 { font-size: 14.67px; }
+        h5 { font-size: 21.33px; }
         strong { color: #DE95BA; font-weight: 700; }
-        .list-dot { list-style-type: none; padding-left: 1.2rem; position: relative; }
-        .list-dot li::before { content: "•"; position: absolute; left: 0; color: #DE95BA; font-weight: 900; }
+        .list-dot { list-style-type: none; padding-left: 0; }
+        .list-dot li { position: relative; padding-left: 1.2rem; }
+        .list-dot li::before { content: "•"; position: absolute; left: 0; color: inherit; font-weight: 900; }
+        .list-dot strong { color: inherit; font-weight: 700; }
+        p strong { color: inherit; font-weight: 700; }
+        .step-item strong { color: inherit; font-weight: 700; }
         /* 字号整体提升 */
-        .text-xs { font-size: 0.9rem !important; }
+        .text-xs { font-size: 0.9rem !important; line-height: 2 !important; }
         .text-sm { font-size: 1.05rem !important; } 
-        .text-\[11px\] { font-size: 14.67px !important; }
+        .text-\[11px\] { font-size: 14.67px !important; line-height: 2 !important; }
         .text-\[10px\] { font-size: 10.67px !important; }
     </style>
 </head>
@@ -232,7 +298,7 @@
                     <div class="step-item">
                         <h4 class="font-bold mb-2">1. 命名与确认</h4>
                         <div class="quote-bubble">对自己说：“我正在经历情绪闪回。”</div>
-                        <p class="text-xs text-gray-500"><strong>认知定位：</strong>承认现在的感觉（恐惧、被遗弃感）实际上是过去的记忆被激活了。你并没有真的回到过去，这只是过去的痛苦在当下的重演。</p>
+                        <p class="text-xs text-gray-500 loose-lines"><strong>认知定位：</strong>承认现在的感觉（恐惧、被遗弃感）实际上是过去的记忆被激活了。你并没有真的回到过去，这只是过去的痛苦在当下的重演。</p>
                     </div>
 
                     <div class="step-item">
@@ -257,7 +323,7 @@
 
                     <div class="step-item">
                         <h4 class="font-bold mb-2">5. 破除“永恒”的错觉</h4>
-                        <p class="text-xs text-gray-500"><strong>修正认知：</strong>闪回会让人觉得痛苦将“永远”持续下去。告诉自己：“这只是暂时的，闪回终会过去，我会重新找回平静。” 现在的你拥有未来。</p>
+                        <p class="text-xs text-gray-500 loose-lines"><strong>修正认知：</strong>闪回会让人觉得痛苦将“永恒”持续下去。告诉自己：“这只是暂时的，闪回终会过去，我会重新找回平静。” 现在的你拥有未来。</p>
                     </div>
 
                     <div class="step-item">
@@ -269,15 +335,14 @@
                         <h4 class="font-bold mb-2">7. 重返身体</h4>
                         <p class="text-xs text-gray-500 mb-4">恐惧会让你想逃离身体（解离）。尝试重新感受身体：</p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="p-4 bg-white border border-pink-100 rounded-xl relative overflow-hidden">
-                                <img src="people.png" alt="放松肌肉示意图" class="absolute right-3 bottom-3 w-28 md:w-40 h-auto rounded-lg shadow-sm opacity-90 pointer-events-none select-none z-0">
-                                <div class="relative z-10 mr-28 md:mr-44 text-[11px] leading-relaxed">
-                                    <strong>a) 肌肉放松：</strong><br>扫描身体，鼓励紧绷肌肉（特别是肩膀和下颚）放松。
-                                </div>
+                            <div class="p-3 bg-white border border-pink-50 rounded-lg text-xs text-center relax-card">
+                                <strong>a) 肌肉放松：</strong>
+                                <div class="visual-area"><div class="relax-lines"><span></span><span></span><span></span></div></div>
+                                <p>从头到脚扫描身体，让紧绷的肌肉放松。</p>
                             </div>
-                            <div class="p-3 bg-white border border-pink-50 rounded-lg text-xs text-center">
+                            <div class="p-3 bg-white border border-pink-50 rounded-lg text-xs text-center breath-card">
                                 <strong>b) 深呼吸：</strong>
-                                <div class="breath-box"></div>
+                                <div class="visual-area"><div class="breath-box"></div></div>
                                 <p>放慢节奏。屏住呼吸会向身体发送危险信号。</p>
                             </div>
                         </div>
@@ -300,7 +365,7 @@
 
                     <div class="step-item">
                         <h4 class="font-bold mb-2">10. 寻找支持</h4>
-                        <p class="text-xs text-gray-500">联系：告诉安全亲友：“我被触发了，我需要一点支持。” 独处时，不要让羞耻感将你孤立。</p>
+                        <p class="text-xs text-gray-500"><strong>联系：</strong>告诉安全亲友：“我被触发了，我需要一点支持。” 独处时，不要让羞耻感将你孤立。</p>
                     </div>
 
                     <div class="step-item">
@@ -310,7 +375,7 @@
 
                     <div class="step-item">
                         <h4 class="font-bold mb-2">12. 搞清楚闪回的根源 (事后工作)</h4>
-                        <p class="text-xs text-gray-500">回溯：这通常指向某个场景。理解现在的痛苦是过去创伤的“回声”，有助于减少挫败感。</p>
+                        <p class="text-xs text-gray-500"><strong>回溯：</strong>这通常指向某个场景。理解现在的痛苦是过去创伤的“回声”，有助于减少挫败感。</p>
                     </div>
 
                     <div class="step-item">
@@ -427,7 +492,7 @@
                     <div class="header-line"></div>
                 </div>
                 <div class="content-section">
-                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">外在批判者让你把周围的人都视为危险、有缺陷或不可信的，表现为被动攻击性、批评他人、需要控制一切，会导致社交孤立或破裂。</p>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed italic">外在批判者让你把周围的人都视为危险、有缺陷或不可信的，表现为被动攻击性、批评他人、需要控制一切，会导致社交孤立或破裂。</p>
                     
                     <div class="mb-8">
                         <h4 class="font-bold mb-4 text-[#DE95BA]">1. 视角转换练习</h4>
@@ -440,12 +505,12 @@
                                 </div>
                             </li>
                             <li><strong>区分“危险”与“不完美”：</strong>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-                                    <div class="bg-red-50 p-3 rounded text-gray-600">
-                                        <strong>危险的人：</strong>虐待狂、无同理心、只索取 (需远离)。
+                                <div class="grid grid-cols-1 gap-4 mt-2">
+                                    <div class="pl-3 border-l-2 border-pink-100 text-gray-600">
+                                        <p><strong>危险的人：</strong>虐待狂、无同理心、只索取 (需远离)。</p>
                                     </div>
-                                    <div class="bg-pink-50 p-3 rounded text-gray-600">
-                                        <strong>不完美的人：</strong>偶尔犯错但本质善良、愿意沟通 (可建立关系)。我们可以对“不完美”的人感到失望，但不必因此切断关系。
+                                    <div class="pl-3 border-l-2 border-pink-100 text-gray-600">
+                                        <p><strong>不完美的人：</strong>偶尔犯错但本质善良、愿意沟通 (可建立关系)。我们可以对“不完美”的人感到失望，但不必因此切断关系。</p>
                                     </div>
                                 </div>
                             </li>
@@ -474,11 +539,11 @@
                     <div class="header-line"></div>
                 </div>
                 <div class="content-section">
-                    <p class="text-sm text-gray-500 mb-6 leading-relaxed">未被表达的悲伤是CPTSD的核心。通过“哀悼”将积压的创伤能量排出体外。</p>
+                    <p class="text-sm text-gray-500 mb-6 leading-relaxed italic">未被表达的悲伤是CPTSD的核心。通过“哀悼”将积压的创伤能量排出体外。</p>
                     
                     <h4 class="font-bold mb-6 text-center">四种关键的哀悼形式</h4>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 part4-grid">
                         <div class="step-item">
                             <h5 class="font-bold text-[#DE95BA] mb-2 text-lg">1. 愤怒</h5>
                             <ul class="text-xs text-gray-500 space-y-2">
@@ -560,15 +625,15 @@
                         <h4 class="font-bold mb-4 text-[#DE95BA]">4. 三大管理策略</h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div class="p-3 border border-pink-100 rounded bg-white">
-                                <strong class="block text-pink-400 text-xs mb-2">区分痛苦</strong>
+                                <strong class="block text-[#DE95BA] text-xs mb-2">区分痛苦</strong>
                                 <p class="text-[11px] text-gray-500">区分“必要的痛苦”(正常的悲伤、恐惧) 和“不必要的痛苦”(自我遗弃、毒性羞耻、批判者的攻击)。</p>
                             </div>
                             <div class="p-3 border border-pink-100 rounded bg-white">
-                                <strong class="block text-pink-400 text-xs mb-2">身体正念</strong>
+                                <strong class="block text-[#DE95BA] text-xs mb-2">身体正念</strong>
                                 <p class="text-[11px] text-gray-500">觉察身体哪里紧张？通过系统化拉伸缓解肌肉的“盔甲化”，通过身体感受来释放冻结的记忆。</p>
                             </div>
                             <div class="p-3 border border-pink-100 rounded bg-white">
-                                <strong class="block text-pink-400 text-xs mb-2">正念代谢抑郁</strong>
+                                <strong class="block text-[#DE95BA] text-xs mb-2">正念代谢抑郁</strong>
                                 <p class="text-[11px] text-gray-500">像消化食物一样消化情绪。允许抑郁流经你的意识，不加评判地观察它，发展对自己的深度同情。</p>
                             </div>
                         </div>
@@ -593,35 +658,35 @@
                         
                         <div class="space-y-4">
                             <div class="flex items-start gap-3">
-                                <div class="bg-pink-100 text-pink-500 font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">1</div>
+                                <div class="bg-pink-100 text-[#DE95BA] font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">1</div>
                                 <div>
                                     <strong class="text-xs text-gray-700 block">阅读疗愈</strong>
                                     <p class="text-[11px] text-gray-500">与书本建立关系。当你感到被作者理解时，这是一种低风险的联结。</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
-                                <div class="bg-pink-100 text-pink-500 font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">2</div>
+                                <div class="bg-pink-100 text-[#DE95BA] font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">2</div>
                                 <div>
                                     <strong class="text-xs text-gray-700 block">寻找“足够好”的人</strong>
                                     <p class="text-[11px] text-gray-500">放弃寻找完美的父母替代品。寻找那些有同理心、愿意倾听、能为自己的错误道歉的人。</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
-                                <div class="bg-pink-100 text-pink-500 font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">3</div>
+                                <div class="bg-pink-100 text-[#DE95BA] font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">3</div>
                                 <div>
                                     <strong class="text-xs text-gray-700 block">治疗性关系</strong>
                                     <p class="text-[11px] text-gray-500">好的心理咨询师可以作为“替代性父母”，提供无条件的积极关注，让你体验安全的依恋。</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
-                                <div class="bg-pink-100 text-pink-500 font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">4</div>
+                                <div class="bg-pink-100 text-[#DE95BA] font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">4</div>
                                 <div>
                                     <strong class="text-xs text-gray-700 block">脆弱性练习</strong>
                                     <p class="text-[11px] text-gray-500">在安全的关系中，尝试暴露一点点脆弱 (如承认恐惧)。如果对方反应良好，再多暴露一点。这是重建信任的重要途径。</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
-                                <div class="bg-pink-100 text-pink-500 font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">5</div>
+                                <div class="bg-pink-100 text-[#DE95BA] font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 text-xs">5</div>
                                 <div>
                                     <strong class="text-xs text-gray-700 block">通过哀悼修复</strong>
                                     <p class="text-[11px] text-gray-500">当在关系中感到失望时，与其攻击或断联，不如表达受伤 (“你那样说时，我感到很难过”)。</p>
@@ -635,19 +700,19 @@
                         <p class="text-xs text-gray-500 mb-4">在寻找伴侣、朋友或治疗师时，寻找具备这些品质的关系：</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="glass-card p-4 rounded-xl">
-                                <strong class="text-pink-400 text-xs block mb-1">共情</strong>
+                                <strong class="text-[#DE95BA] text-xs block mb-1">共情</strong>
                                 <p class="text-[11px] text-gray-500">对方能通过感受进入你的体验，能仔细倾听并镜像你的感受。</p>
                             </div>
                             <div class="glass-card p-4 rounded-xl">
-                                <strong class="text-pink-400 text-xs block mb-1">真诚的脆弱性</strong>
+                                <strong class="text-[#DE95BA] text-xs block mb-1">真诚的脆弱性</strong>
                                 <p class="text-[11px] text-gray-500">真实的关系造就健康的关系。适度的自我表露能打破羞耻感。</p>
                             </div>
                             <div class="glass-card p-4 rounded-xl">
-                                <strong class="text-pink-400 text-xs block mb-1">对话性</strong>
+                                <strong class="text-[#DE95BA] text-xs block mb-1">对话性</strong>
                                 <p class="text-[11px] text-gray-500">关系是互动的，能提供创伤知识，减少羞耻，增加控制感。</p>
                             </div>
                             <div class="glass-card p-4 rounded-xl">
-                                <strong class="text-pink-400 text-xs block mb-1">协作关系修复</strong>
+                                <strong class="text-[#DE95BA] text-xs block mb-1">协作关系修复</strong>
                                 <p class="text-[11px] text-gray-500">能够承认伤害，承担责任，并共同修复关系。这比从不犯错更重要。</p>
                             </div>
                         </div>
@@ -687,20 +752,20 @@
                     <p class="text-xs text-gray-400 mb-3">你是成年人，你拥有以下不可剥夺的权利：</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <div class="space-y-2">
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">1. 我有权得到尊重的对待。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">2. 我有权说“不”。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">3. 我有权犯错。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">4. 我有权拥有自己的感受、信念、观点和偏好。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">5. 我有权拒绝未经请求的建议或反馈。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">6. 我有权改变主意、计划或行动方案。</div>
+                            <div class="rights-item">· 我有权得到尊重的对待。</div>
+                            <div class="rights-item">· 我有权说“不”。</div>
+                            <div class="rights-item">· 我有权犯错。</div>
+                            <div class="rights-item">· 我有权拥有自己的感受、信念、观点和偏好。</div>
+                            <div class="rights-item">· 我有权拒绝未经请求的建议或反馈。</div>
+                            <div class="rights-item">· 我有权改变主意、计划或行动方案。</div>
                         </div>
                         <div class="space-y-2">
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">7. 我有权抗议讽刺、破坏性批评或不公平待遇。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">8. 我有权感到愤怒并以非虐待方式表达它。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">9. 我有权拒绝为任何其他人的问题或不良行为承担责任。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">10. 我有权偶尔幼稚、不成熟、矛盾或不一致。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">11. 我有权玩耍、浪费时间并不总是富有成效。</div>
-                            <div class="text-[11px] leading-[2] p-3 h-[72px] overflow-hidden flex items-center border border-pink-50 rounded bg-white">12. 我有权向朋友寻求情感支持，适度抱怨和宣泄。</div>
+                            <div class="rights-item">· 我有权抗议讽刺、破坏性批评或不公平待遇。</div>
+                            <div class="rights-item">· 我有权感到愤怒并以非虐待方式表达它。</div>
+                            <div class="rights-item">· 我有权拒绝为任何其他人的问题或不良行为承担责任。</div>
+                            <div class="rights-item">· 我有权偶尔幼稚、不成熟、矛盾或不一致。</div>
+                            <div class="rights-item">· 我有权玩耍、浪费时间并不总是富有成效。</div>
+                            <div class="rights-item">· 我有权向朋友寻求情感支持，适度抱怨和宣泄。</div>
                         </div>
                     </div>
                 </div>
